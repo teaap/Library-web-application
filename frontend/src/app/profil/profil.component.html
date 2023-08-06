@@ -1,0 +1,187 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Biblioteka</h1>  
+    </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" *ngIf="registrovan!=false">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac'" href="glavnaCitalac">Glavna</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="glavnaModerator">Glavna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profil">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="status=='blokiran'" href="pretraga">Pretraga</a>
+            <a class="nav-link active" *ngIf="status!='blokiran'" href="naprednapretraga">Pretraga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac' && status!='blokiran'" href="dodajknjigu">Zahtev za novu knjigu</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator' && status!='blokiran'" href="dodajknjigumod">Dodaj novu knjigu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="trenutnazaduzenja">Pregled zaduzenih knjiga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="zaduzenja">Istorija zaduzenja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="zahtevimoder">Zahtevi</a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+    
+
+    <section style="background-color: #eee;" >
+        <div class="container py-5">
+          <div class="row">
+            <div class="col">
+              
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center">
+                  <div  *ngIf="urll"class="divCentering" [style.margin-top.px]="40">
+                    <img [src]=urll alt="undef"  style="height:200px">
+                  </div>
+                  <div *ngIf="!urll"class="divCentering" [style.margin-top.px]="40">
+                      <img src="/assets/avatar.png" style="width: 150px;" alt="undef" >
+                  </div>
+                  <h3 class="my-3" value="ime">{{ime}} {{prezime}}</h3>
+                  <p class="text-muted mb-1">{{username}}</p>
+                  <p class="text-muted mb-4">{{adresa}}</p>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Slika:</label>
+                    <input class="form-control" (input)="onFileChanged($event)" type="file" [(ngModel)]="slika1" name="slika"  accept=".jpg,.png">
+                  </div>
+                  <div class="d-flex justify-content-center mb-2">
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-4 mb-lg-0">
+                <div class="card-body p-0">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Korisnicko ime:</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="username"  [(ngModel)]="usernameNew" [placeholder]="username">
+                     
+                    </div>
+                  </div>
+                  <hr>
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Ime:</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ime"  [(ngModel)]="imeNew" [placeholder]="ime">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Prezime:</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="prezime"  [(ngModel)]="prezimeNew" [placeholder]="prezime">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Telefon:</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="telefon"  [(ngModel)]="telefonNew" [placeholder]="telefon">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email:</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="email"  [(ngModel)]="emailNew" [placeholder]="email">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Adresa:</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control"(keyup)="adresap()"  [(ngModel)]="adresaNew" [placeholder]="adresa">
+                    </div>
+                  </div>
+                  <span style="color: red;">{{adresaneispravna}}</span><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card mb-4 mb-md-0">
+                    <button type="submit" (click)="update()" *ngIf="status!='blokiran'" class="btn btn-primary ">Izmeni</button>
+                    
+                  </div>
+                </div>
+                
+              </div>
+              
+            </div>
+            <br>
+
+            <ngx-charts-bar-vertical 
+              [view]="[1000,400]"
+              [results]="saleData"
+              [xAxisLabel]="'Zanrovi'"
+              [legendTitle]="'Knjige po zanrovima'"
+              [yAxisLabel]="'Skala'"
+              [legend]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxis]="true"
+              [yAxis]="true"
+              [gradient]="true">
+          </ngx-charts-bar-vertical>
+          <br><br><br><br>
+
+            <ngx-charts-bar-vertical 
+              [view]="[1000,400]"
+              [results]="saleData1"
+              [xAxisLabel]="'Meseci'"
+              [legendTitle]="'Knjige po mesecima'"
+              [yAxisLabel]="'Skala'"
+              [legend]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxis]="true"
+              [yAxis]="true"
+              [gradient]="true">
+          </ngx-charts-bar-vertical>
+          </div>
+          
+        </div>
+        
+      </section>
+      
+      
+  
+  <div class="mt-5 p-4 bg-dark text-white text-center  bottom: 0" [class.footer]="true" >
+    <p>Footer</p>
+  </div>
+
+  

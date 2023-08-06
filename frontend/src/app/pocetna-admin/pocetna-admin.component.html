@@ -1,0 +1,122 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Administrator</h1>  
+    </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="">Log out</a>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+<div class="container" style="padding-top:10px">   
+
+ <div class="table-responsive"> 
+  <span>
+    {{message}}
+    </span> 
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Korisnicko ime</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Email</th>
+          <th>Telefon</th>
+          <th>Tip</th>
+          <th>Adresa</th>
+          <th>Azuriraj</th>
+          <th>Obrisi</th>
+          <th>Blokiraj</th>
+          <th>Privilegije(Smanji/Povecaj)</th>
+          <th>Odobri</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let n of allUsers">
+              <td>{{n.username}}</td>
+              <td>{{n.ime}}</td>
+              <td>{{n.prezime}}</td>
+              <td>{{n.email}}</td>
+              <td>{{n.telefon}}</td>
+              <td>{{n.tip}}</td>
+              <td>{{n.adresa}}</td>
+              <td><button (click)="azuriraj(n.username)" class="btn btn-info text-white">Azuriraj</button></td>
+              <td><button (click)="obrisiKorisnika(n.id,n.username)" class="btn btn-info text-white">Obrisi</button></td>
+              <td *ngIf="n.status!='blokiran'"><button (click)="blokirajKorisnika(n.username)" class="btn btn-info text-white" >Blokiraj</button></td>
+              <td *ngIf="n.status=='blokiran'"><button (click)="odblokirajKorisnika(n.username)" class="btn btn-info text-white">Odblokiraj</button></td>
+              <td *ngIf="n.tip=='admin'"><button  class="btn btn-info text-white" disabled>Admin</button></td>
+              <td *ngIf="n.tip=='citalac'"><button (click)="updateumoder(n.username)" class="btn btn-info text-white">Moderator</button></td>
+              <td *ngIf="n.tip=='moderator'"><button (click)="updateucit(n.username)" class="btn btn-info text-white">Citalac</button></td>
+              <td *ngIf="n.status=='novi'"><button (click)="updateNovi(n.username)" class="btn btn-info text-white">Odobri</button></td>
+              <td *ngIf="n.status!='novi'"></td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
+      <button (click)="dodajKorisnika()" class="btn btn-info text-white">Dodaj korisnika</button>
+    </div>
+  </div>
+  <div class="table-responsive">  
+  <div class="container" style="padding-top:10px">   
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Naziv</th>
+          <th>Autor</th>
+          <th>Godina</th>
+          <th>Zanr</th>
+          <th>Jezik</th>
+          <th>Izdavac</th>
+          <th>Broj</th>
+          <th>Azuriraj</th>
+          <th>Obrisi/Odobri</th>
+          <th>Odbij</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let n of allBooks">
+            <td>{{n.naziv}}</td>
+            <td>{{n.autor}}</td>
+            <td>{{n.godina}}</td>
+            <td>{{n.zanr}}</td>
+            <td>{{n.jezik}}</td>
+            <td>{{n.izdavac}}</td>
+            <td>{{n.stanje}}</td>
+            <td><button (click)="azurirajKnjigu(n.id)" class="btn btn-info text-white">Azuriraj</button></td>
+            <td *ngIf="n.status!='zahtev'"><button (click)="obrisiKnjigu(n.id)" class="btn btn-info text-white">Obrisi</button></td>
+            <td *ngIf="n.status=='zahtev'"><button (click)="odobri(n.id)" class="btn btn-info text-white">Odobri</button></td>
+            <td *ngIf="n.status=='zahtev'"><button (click)="odbij(n.id)" class="btn btn-info text-white">Odbij</button></td>
+            <td *ngIf="n.status!='zahtev'"></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
+      <button (click)="dodajKnjigu()" class="btn btn-info text-white">Dodaj knjigu</button>
+    </div>
+  </div>
+  <br/>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
+      <label for="username"> Broj dana za zaduzenje:</label>
+      <input type="text" class="form-control" [(ngModel)]="zaduzenje" name="zaduzenje" [placeholder]="zaduzenjee" >
+    </div>
+  </div>
+  <br/>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
+      <button (click)="promenazaduzenja()" class="btn btn-info text-white">Promeni</button>
+    </div>
+  </div>
+  <div class="mt-5 p-4 bg-dark text-white text-center" [class.footer]="true">
+    <p>Footer</p>
+  </div>

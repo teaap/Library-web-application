@@ -1,0 +1,107 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Pretraga</h1>  
+    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" *ngIf="registrovan==false">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="">Pocetna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="registracija">Registracija</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="pretraga">Pretrazi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="login">Log in</a>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" *ngIf="registrovan!=false">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac'" href="glavnaCitalac">Glavna</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="glavnaModerator">Glavna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profil">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac'|| status=='blokiran'" href="pretraga">Pretraga</a>
+            <a class="nav-link active" *ngIf="vrsta=='moderator' && status!='blokiran'" href="naprednapretraga">Pretraga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac' && status!='blokiran'" href="dodajknjigu">Zahtev za novu knjigu</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator' && status!='blokiran'" href="dodajknjigumod">Dodaj novu knjigu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="trenutnazaduzenja">Pregled zaduzenih knjiga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="zaduzenja">Istorija zaduzenja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="zahtevimoder">Zahtevi</a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+    <div class="row height d-flex justify-content-center ">
+      <div class="col-md-6">
+        <div class="form">
+          <i class="fa fa-search"></i>
+          <input type="text" class="form-control form-input" [(ngModel)]="searchParam" name="searchParam" placeholder="Pretraga naziv...">
+        </div>
+        <br>
+        <div class="form">
+            <i class="fa fa-search"></i>
+            <input type="text" class="form-control form-input" [(ngModel)]="searchAutor" name="searchAutor" placeholder="Pretraga autor...">
+          </div>
+      </div>
+      <div class="col-md-6">
+        <br/><br/><br/><br/>
+      <div class="form">
+        <button type="submit"(click)="search()" class="btn btn-info text-white" id="potvrda" >Potvrdi</button>
+      </div>
+      </div>
+  </div>
+
+  <div style="align-items: center;flex-direction: column;display: flex;justify-content: center;padding: 15px;" >
+
+    <div *ngFor="let urll of searchedBooks"  >
+      <div style="align-items: center;flex-direction: column;display: flex;justify-content: center;padding: 15px;">
+      <table>
+        <tr>
+          <div class="row text-center">
+        <div class="col-md-6">
+          <div  *ngIf="urll.url">
+            <img [src]=urll.url alt="und"  (click)="nasliku(urll.id)" style="height:100px; width:auto" ><br/>
+        </div>
+        <div *ngIf="!urll.url">
+            <img src="/assets/book.png" (click)="nasliku(urll.id)" alt="und" style="height:100px; width:auto" ><br/>
+        </div>
+        </div>
+        <div class="col-md-6 text-left">
+          <br/>
+          {{urll.naziv}}
+           
+           <br/>{{urll.autor}}
+        </div>
+        </div>
+        </tr>
+        <br/>
+        </table>
+    </div>
+</div>
+
+
+ 
+

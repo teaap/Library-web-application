@@ -1,0 +1,66 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Dodaj novu knjigu</h1>
+  </div>
+  
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="citalac">Pocetna</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <h2>Dodaj zahtev</h2>
+    <form>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="naziv" placeholder="Naziv" name="naziv">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="autor" placeholder="Autor" name="autor">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="izdavao" placeholder="Izdavac" name="izdavao">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="jezik" placeholder="Jezik" name="jezik">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="godina" placeholder="Godina" name="godina">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="zanr" placeholder="Zanr" name="zanr">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+            <input class="form-control"[(ngModel)]="slika" (input)="onFileChanged($event)" type="file" name="slika"  accept=".jpg,.png,.jpeg">
+        </div>
+       
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+            <button type="submit" (click)="dodajZahtev()" class="btn btn-info text-white" id="potvrda" >Dodaj zahtev</button>
+        </div>
+       
+      </div>
+    </form>
+  </div>
+  <div style="padding:20px">{{message}}</div> 
+
+  <div class="mt-5 p-4 bg-dark text-white text-center" [class.footer]="true">
+    <p>Footer</p>
+  </div>

@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "63299c01c73205805b5cbdcc"
+  },
+  "idKnjige": 3,
+  "broj": 0,
+  "username": "pera",
+  "aktivan": false,
+  "produzio": false,
+  "datumOd": {
+    "$date": {
+      "$numberLong": "1632308097871"
+    }
+  },
+  "datumDo": {
+    "$date": {
+      "$numberLong": "1649069697871"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad42fbc30c6d1e042ed81"
+  },
+  "idKnjige": 0,
+  "broj": 0,
+  "username": "pera",
+  "aktivan": false,
+  "produzio": true,
+  "datumOd": {
+    "$date": {
+      "$numberLong": "1663751215565"
+    }
+  },
+  "datumDo": {
+    "$date": {
+      "$numberLong": "1663752356414"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad43abc30c6d1e042ed8f"
+  },
+  "idKnjige": 2,
+  "broj": 0,
+  "username": "pera",
+  "aktivan": false,
+  "produzio": false,
+  "datumOd": {
+    "$date": {
+      "$numberLong": "1663751226864"
+    }
+  },
+  "datumDo": {
+    "$date": {
+      "$numberLong": "1663754972355"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad4e2bc30c6d1e042edae"
+  },
+  "idKnjige": 3,
+  "broj": 0,
+  "username": "joka",
+  "aktivan": true,
+  "produzio": false,
+  "datumOd": {
+    "$date": {
+      "$numberLong": "1663751394280"
+    }
+  },
+  "datumDo": {
+    "$date": {
+      "$numberLong": "1664960994280"
+    }
+  },
+  "__v": 0
+}]

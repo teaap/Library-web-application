@@ -1,0 +1,104 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Pretraga</h1>  
+    </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac'" href="citalac">Pocetna</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="moderator">Pocetna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="naprednapretraga">Pretrazi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="">Log out</a>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+    <div class="row height d-flex justify-content-center ">
+      <div class="col-md-6">
+        <div class="form">
+          <i class="fa fa-search"></i>
+          <input type="text" class="form-control form-input" [(ngModel)]="searchParam" name="searchParam" placeholder="Pretraga naziv...">
+        </div>
+        <br>
+        <div class="form">
+          <i class="fa fa-search"></i>
+          <input type="text" class="form-control form-input" [(ngModel)]="searchAutor" name="searchAutor" placeholder="Pretraga autor...">
+        </div>
+        <br>
+        <div class="form">
+          Izaberite zanr: <br/>
+          <select multiple class="form-select" id="sel2" name="sellist2" [(ngModel)]="searchzanr">
+            <option value="drama" (change)="addgenre(0)">drama</option>
+            <option value="triler">triler</option>
+            <option value="ljubavni">ljubavni</option>
+            <option value="klasici">klasici</option>
+            <option value="komedija">komedija</option>
+            <option value="psihologija">psihologija</option>
+            <option value="filozofija">filozofija</option>
+            <option value="naucna fantastika">naucna fantastika</option>
+            <option value="istorija">istorija</option>
+          </select>
+        </div>
+        <br>
+        <div class="form">
+          Godina od: <br/>
+          <input type="text" class="form-control form-input"  [(ngModel)]="searchDatuOd" name="datumOd" placeholder="Krajnja godina">
+        </div>
+        <br>  
+        <div class="form">
+          Godina do: <br/>
+          <input type="text" class="form-control form-input"  [(ngModel)]="searchDatumDo" name="datumDo" placeholder="Pocetna godina">
+        </div>
+        <br/>
+        <div class="form">
+          Izdavac: <br/>
+          <input type="text" class="form-control form-input"  [(ngModel)]="izdavac" name="izdavac" placeholder="Izdavac...">
+        </div>
+        <br/>
+        <div class="col-md-6 offset-5">
+          <button type="submit"(click)="search()" class="btn btn-info text-white" id="potvrda" >Potvrdi</button>
+        </div>
+        </div>
+    </div>
+
+  <div style="align-items: center;flex-direction: column;display: flex;justify-content: center;padding: 15px;" >
+
+    <div *ngFor="let urll of searchedBooks"  >
+      <div style="align-items: center;flex-direction: column;display: flex;justify-content: center;padding: 15px;">
+      <table>
+        <tr>
+          <div class="row text-center">
+        <div class="col-md-6">
+          <div  *ngIf="urll.url">
+            <img [src]=urll.url alt="und"  (click)="nasliku(urll.id)" style="height:100px; width:auto" ><br/>
+        </div>
+        <div *ngIf="!urll.url">
+            <img src="/assets/book.png" (click)="nasliku(urll.id)" alt="und" style="height:100px; width:auto" ><br/>
+        </div>
+        </div>
+        <div class="col-md-6 text-left">
+          <br/>
+          {{urll.naziv}}
+           
+           <br/>{{urll.autor}}
+        </div>
+        </div>
+        </tr>
+        <br/>
+        </table>
+    </div>
+</div>
+  </div>
+</div>
+<div class="mt-5 p-4 bg-dark text-white text-center" [class.footer]="true">
+  <p>Footer</p>
+</div>
+ 

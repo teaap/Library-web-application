@@ -1,0 +1,111 @@
+[{
+  "_id": {
+    "$oid": "6314c67e3adbb90bde1dde13"
+  },
+  "id": 0,
+  "autor": "Jelena Bacic Alimpic",
+  "godina": "2022",
+  "izdavac": "laguna",
+  "jezik": "srpski",
+  "naziv": "kletva",
+  "zanr": "drama,triler",
+  "slika": "9bf96bf06edc0b8ff66ab650130a66f4",
+  "__v": 0,
+  "status": "dodata",
+  "ocena": 0,
+  "zaduzena": 0,
+  "stanje": 3,
+  "preuzimana": 1
+},{
+  "_id": {
+    "$oid": "6314c6cb3adbb90bde1dde16"
+  },
+  "id": 1,
+  "autor": "Vedrana Rudan",
+  "godina": "2022",
+  "izdavac": "Laguna",
+  "jezik": "srpski",
+  "naziv": "Dozivotna robija",
+  "zanr": "drama",
+  "slika": "5efd192c466ad98aa8a2fa19430b8d63",
+  "__v": 0,
+  "status": "dodata",
+  "zaduzena": 0,
+  "stanje": 3,
+  "ocena": 0,
+  "preuzimana": 0
+},{
+  "_id": {
+    "$oid": "6314c7003adbb90bde1dde19"
+  },
+  "id": 2,
+  "autor": "Andes Ruslund",
+  "godina": "2022",
+  "izdavac": "asdf",
+  "jezik": "srpski",
+  "naziv": "Mirno spavaj",
+  "zanr": "triler",
+  "slika": "4ef8be4eef62fd4327c2c1c34d5c90f4",
+  "__v": 0,
+  "status": "dodata",
+  "ocena": 7,
+  "zaduzena": 0,
+  "stanje": 3,
+  "preuzimana": 1
+},{
+  "_id": {
+    "$oid": "63298b50c73205805b5cbceb"
+  },
+  "id": 3,
+  "autor": "Vilhelm Šmid",
+  "godina": "2019",
+  "izdavac": "Laguna",
+  "ocena": 8.5,
+  "jezik": "srpski,engleski",
+  "naziv": "Sreca",
+  "zanr": "psihologija,filozofija",
+  "slika": "79dd4e15d46a6abe54c96588d02b4bef",
+  "preuzimana": 2,
+  "status": "dodata",
+  "zaduzena": 1,
+  "stanje": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632997ecc73205805b5cbd26"
+  },
+  "id": 4,
+  "autor": "Srdjan Valjarevic",
+  "godina": "2022",
+  "izdavac": "Delfi",
+  "ocena": 0,
+  "jezik": "srpski",
+  "naziv": "Komo",
+  "zanr": "drama",
+  "slika": "d3409bd3bc57fb3b46b41f1ad3a7a1ec",
+  "preuzimana": 0,
+  "status": "zahtev",
+  "zaduzena": 0,
+  "user": "joka",
+  "stanje": 3,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632998ffc73205805b5cbd42"
+  },
+  "id": 5,
+  "autor": "Dostojevski Fjodor",
+  "godina": "2012",
+  "izdavac": "Laguna",
+  "ocena": 0,
+  "jezik": "srpski,ruski",
+  "naziv": "Zlocin i kazna",
+  "zanr": "klasici,triler",
+  "slika": "b9dc611204d19fb1f9d24e94854ef5e4",
+  "preuzimana": 0,
+  "status": "zahtev",
+  "zaduzena": 0,
+  "user": "joka",
+  "stanje": 3,
+  "__v": 0
+}]

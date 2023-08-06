@@ -1,0 +1,180 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Pretraga</h1>  
+    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="pocetna" *ngIf="!registrovan">Pocetna</a>
+            <a class="nav-link active" href="moderator" *ngIf="vrsta=='moderator'">Pocetna</a>
+            <a class="nav-link active" href="citalac" *ngIf="vrsta=='citalac'">Pocetna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="registrovan==false" href="registracija">Registracija</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="pretraga">Pretrazi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="registrovan==false" href="login">Log in</a>
+            <a class="nav-link active" *ngIf="registrovan==true" href="">Log out</a>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+
+    <section style="background-color: #eee;" >
+      <div class="container py-5">
+        <div class="row">
+          <div class="col">
+            
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <div  *ngIf="urll"class="divCentering" [style.margin-top.px]="40">
+                  <img [src]=urll alt="undef"  style="height:200px">
+                </div>
+                <div *ngIf="!urll"class="divCentering" [style.margin-top.px]="40">
+                    <img src="/assets/book.png" style="width: 150px;" alt="undef" >
+                </div>
+                <h3 class="my-3" value="ime">{{naziv}}</h3>
+                <p class="text-muted mb-1">{{autor}}</p>
+                <p class="text-muted mb-4">{{godina}}</p>
+                <p><span *ngFor="let k of ocenaforfor">
+                  <span  *ngIf="k<ocenaknjige && ocenaknjige<k+1" class="fa fa-star-half-o checked"></span>
+                    <span *ngIf="(k>(ocenaknjige) || !(k<ocenaknjige && ocenaknjige<k+1)) && !(k<=(ocenaknjige-1))" class="fa fa-star "></span>   
+                    <span  *ngIf="k<=(ocenaknjige-1)" class="fa fa-star checked"></span>    
+                  &nbsp;
+                  </span>
+                </p>
+                <div class="d-flex justify-content-center mb-2">
+                </div>
+              </div>
+            </div>
+            <div class="card mb-4 mb-lg-0">
+              <div class="card-body p-0">
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Naziv:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{naziv}}</p>
+                   
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Autor:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{autor}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Jezik:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{jezik}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Godina:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{godina | date:'yyyy/MM/dd'}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Izdavac:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{izdavao}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Zanr:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{zanr}}</p>
+                  </div>
+                </div>                
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Stanje:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{stanje}}</p>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <p > <button type="submit"(click)="zaduziKnjigu()"   class="btn btn-info text-white" id="potvrda" [class.blokiran]="broj==0 || status=='blokiran' || vrsta=='admin' || !registrovan">Zaduzi</button></p>
+          <p ><button type="submit"(click)="rezervisiKnjigu()"  class="btn btn-info text-white" id="potvrda" [class.blokiran]="broj>0 || status=='blokiran' || vrsta=='admin' || !registrovan">Rezervisi</button></p>
+        <br>
+        {{message}}
+        </div>
+        </div>
+      </div>
+      
+    </section>
+    <section style="background-color: #e7effd;">
+      <div class="container my-5 py-5 text-dark">        
+        <div class="row d-flex justify-content-center">
+          <h1>Komentari</h1>
+          <div class="col-md-11 col-lg-9 col-xl-7">
+            <div class="d-flex flex-start mb-4">            
+              <div class="card w-100">
+                <div class="card-body p-4">
+                  <div class="" *ngFor="let n of allKoments">
+                    <h3>{{n.username}}</h3>
+                    <p><span *ngFor="let k of ocenaforfor">
+                      <span  *ngIf="k<n.ocena" class="fa fa-star checked"></span>
+                        <span *ngIf="k>=n.ocena" class="fa fa-star "></span>     
+                      &nbsp;
+                      </span>
+                    </p>
+                    <p class="small">{{n.datum | date:'yyyy/MM/dd'}}</p>
+                    <p *ngIf="n.izmenjen==true"><i>Izmenjen</i></p>
+                    <p>
+                      {{n.tekst}}
+                    </p>
+                    <button (click)="izmeni(n.tekst,n.ocena)" *ngIf="username==n.username && status!='blokiran'" class="btn btn-info text-white">Izmeni</button>
+                    <hr/>
+                  </div>
+                  <div class="col-md-6 offset-5" ><button (click)="dodajkomentar()" *ngIf="registrovan!=false && status!='blokiran' && komentarisao!=1" class="btn btn-secondary text-white">Dodaj komentar</button></div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+
+   
+  <div class="mt-5 p-4 bg-dark text-white text-center" [class.footer]="true" >
+    <p>Footer</p>
+  </div>

@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "6310d0c4b44c2f20f912d2c2"
+  },
+  "adresa": "Ruzveltova 150 Beograd",
+  "email": "admin77@gmail.com",
+  "ime": "Admin",
+  "lozinka": "admin123",
+  "prezime": "Adminic",
+  "slika": "",
+  "status": "odobren",
+  "telefon": "061474788",
+  "tip": "admin",
+  "zaduzeno": 0,
+  "username": "admin",
+  "id": 0
+},{
+  "_id": {
+    "$oid": "6328bc6816d4b83b13e69122"
+  },
+  "adresa": "Milana RAKICA 50, Beograd",
+  "email": "a@a",
+  "ime": "petar",
+  "prezime": "petrovic",
+  "lozinka": "a",
+  "slika": "19c5a89e5ec7eeb71c8e269bf7b67d83",
+  "status": "odobren",
+  "tip": "moderator",
+  "zaduzeno": 0,
+  "id": 1,
+  "username": "pera",
+  "telefon": "+381",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6328bccf16d4b83b13e69127"
+  },
+  "adresa": "Jo 15, Jo",
+  "email": "jo@jo",
+  "ime": "jovana",
+  "prezime": "jovanic",
+  "lozinka": "a",
+  "slika": "bbf7df340f34bd203b0d936c6dc00db4",
+  "status": "odobren",
+  "tip": "citalac",
+  "zaduzeno": 1,
+  "id": 2,
+  "username": "joka",
+  "telefon": "+381",
+  "__v": 0
+}]

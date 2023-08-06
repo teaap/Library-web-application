@@ -1,0 +1,225 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Biblioteka</h1>  
+    </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="glavnaCitalac">Glavna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profil">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="naprednapretraga" *ngIf="status!='blokiran'">Pretraga</a>
+            <a class="nav-link active" href="pretraga" *ngIf="status=='blokiran'">Pretraga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="status!='blokiran'" href="dodajknjigu">Zahtev za novu knjigu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="trenutnazaduzenja">Pregled zaduzenih knjiga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="zaduzenja">Istorija zaduzenja</a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+    <section style="background-color: #eee;" >
+      <div class="container py-5">
+        <div class="row">
+          <div class="col">
+            <h2>Knjiga dana</h2>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <div  *ngIf="urll"class="divCentering" [style.margin-top.px]="40">
+                  
+                  <img [src]=urll alt="undef"  style="height:200px">
+                </div>
+                <div *ngIf="!urll"class="divCentering" [style.margin-top.px]="40">
+                    <img src="/assets/book.png" style="width: 150px;" alt="undef" >
+                </div>
+                <h3 class="my-3" value="ime">{{naziv}}</h3>
+                <p class="text-muted mb-1">{{autor}}</p>
+                <p class="text-muted mb-4">{{godina}}</p>
+                <div class="d-flex justify-content-center mb-2">
+                </div>
+              </div>
+            </div>
+            <div class="card mb-4 mb-lg-0">
+              <div class="card-body p-0">
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Naziv:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{naziv}}</p>
+                   
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Autor:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{autor}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Jezik:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{jezik}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Godina:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{godina}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Izdavac:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{izdavao}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Zanr:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{zanr}}</p>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <section style="background-color: #eee;" >
+      <div class="container py-5">
+        <div class="row">
+          <div class="col">
+            <h2>Obavestenja</h2>
+          </div>
+        </div>
+    
+        <div class="row">
+          
+          <div class="col-lg-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3" *ngIf="rokzadvadanaob!=''">
+                    <p class="mb-0">Istice rok za dva dana knjige:</p>
+                  </div>
+                  <div class="col-sm-9" *ngIf="rokzadvadanaob!=''">
+                    <p id="nazivNew"  > {{knjigadva}}</p>
+                    <hr>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                <div class="col-sm-3" *ngIf="istekaorokob!=''">
+                  <p class="mb-0">{{istekaorokob}}:</p>
+                </div>
+                <div class="col-sm-9" *ngIf="istekaorokob!=''">
+                  <p id="nazivNew"  > {{isteko}}</p>
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3" *ngIf="prihvacenzahtev!=''">
+                  <p class="mb-0">{{prihvacenzahtev}}:</p>
+                </div>
+                <div class="col-sm-9" *ngIf="prihvacenzahtev!=''">
+                  <div *ngFor="let n of prihvacene">
+                  <p id="nazivNew"  > {{n.naziv}}</p>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+                
+                
+                <div class="row">
+                  <div class="col-sm-3" *ngIf="imatriknjigeob!=''">
+                    <p class="mb-0">Obavestenje:</p>
+                  </div>
+                  <div class="col-sm-9" *ngIf="imatriknjigeob!=''">
+                    <p id="nazivNew"  > {{imatriknjigeob}}</p>
+                    <hr>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-sm-3" *ngIf="blokiranob!=''">
+                    <p class="mb-0">Upozorenje:</p>
+                  </div>
+                  <div class="col-sm-9" *ngIf="blokiranob!=''">
+                    <p id="nazivNew"  > {{blokiranob}}</p>
+                    <hr>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-sm-3" *ngIf="rezervisanaob!=''">
+                    <p class="mb-0">{{rezervisanaob}}</p>
+                  </div>
+                  <div class="col-sm-9" *ngIf="rezervisanaob!=''">
+                    <p id="nazivNew" *ngFor="let n of rezervisane" > {{n.naziv}}</p>
+                    <hr>
+                  </div>
+                  
+                </div>
+                
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+    
+    <div class="mt-5 p-4 bg-dark text-white text-center" [class.footer]="true">
+      <p>Footer</p>
+    </div>
+    
+  
+  

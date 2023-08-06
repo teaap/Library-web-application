@@ -1,0 +1,82 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Zahtevi</h1>  
+    </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="glavnaModerator">Glavna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profil">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="status=='blokiran'" href="pretraga">Pretraga</a>
+            <a class="nav-link active" *ngIf="status!='blokiran'" href="naprednapretraga">Pretraga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="status!='blokiran'" href="dodajknjigumod">Dodaj novu knjigu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="trenutnazaduzenja">Pregled zaduzenih knjiga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="zaduzenja">Istorija zaduzenja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="zahtevimoder">Zahtevi</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div *ngIf="allbookszahtevi.length==0" style="padding: 30px; font:caption" > U bazi nema zahteva</div>
+    <div *ngIf="allbookszahtevi.length>0">
+    <div class="container" >
+    <div  style="padding:10px;">
+    <div class="table-responsive" style=" text-align: center;">  
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Zahtev za knjigu</th>
+              <th>Id</th>
+              <th>Naziv</th>
+              <th>Autor</th>
+              <th>Godina</th>
+              <th>Izdavac</th>
+              <th>Zanr</th>
+              <th>Odobri dodavanje knjige</th>
+              <th>Odbij dodavanje knjige</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let n of allbookszahtevi">        
+                <div *ngFor="let nn of allzahtevi">
+                  <td *ngIf="nn.id==n.id">{{nn.username}}</td>
+                </div>
+                  <td >{{n.id}}</td>
+                  <td>{{n.naziv}}</td>
+                  <td>{{n.autor}}</td>
+                  <td>{{n.godina}}</td>
+                  <td>{{n.izdavac}}</td>
+                  <td>{{n.zanr}}</td>
+                  <td ><button (click)="odobri(n.id)" class="btn btn-info text-white">Odobri</button></td>
+                  <td ><button (click)="odbij(n.id)" class="btn btn-info text-white">Odbij</button></td>
+                
+              </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+    </div>
+  
+        <div class="mt-5 p-4 bg-dark text-white text-center" [class.footerabs]="allbookszahtevi.length==0" *ngIf="allbookszahtevi.length==0">
+          <p>Footer</p>
+        </div>
+    
+    
+    
+        <div class="mt-5 p-4 bg-dark text-white text-center" [class.footerabs]="allbookszahtevi.length>0" *ngIf="allbookszahtevi.length>0">
+            <p>Footer</p>
+          </div>

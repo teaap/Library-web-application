@@ -1,0 +1,178 @@
+<div class="p-5 bg-info text-white text-center">
+    <h1>Biblioteka</h1>  
+    </div>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac'" href="glavnaCitalac">Glavna</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="glavnaModerator">Glavna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profil">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="pretraga" *ngIf="status=='blokiran'">Pretraga</a>
+            <a class="nav-link active" href="naprednapretraga" *ngIf="status!='blokiran'">Pretraga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="vrsta=='citalac' && status!='blokiran'" href="dodajknjigu">Zahtev za novu knjigu</a>
+            <a class="nav-link active"  *ngIf="vrsta=='moderator' && status!='blokiran'" href="dodajknjigumod">Dodaj novu knjigu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="trenutnazaduzenja">Pregled zaduzenih knjiga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="zaduzenja">Istorija zaduzenja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active"  *ngIf="vrsta=='moderator'" href="zahtevimoder">Zahtevi</a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+    <div *ngIf="allBooks.length==0" style="padding: 30px; font:caption" > Ne postoji zaduzena knjiga</div>
+    
+    <div *ngIf="allBooks.length>0">
+    <div style="padding-top:10px ;" *ngFor="let n of allBooks">
+      
+      
+    <section style="background-color: #eee;" >
+      <div class="container py-5">
+        <div class="row">
+          <div class="col">
+            
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <div  *ngIf="n.url"class="divCentering" [style.margin-top.px]="40">
+                  
+                  <img [src]=n.url alt="undef"  style="height:200px">
+                </div>
+                <div *ngIf="!n.url"class="divCentering" [style.margin-top.px]="40">
+                    <img src="/assets/book.png" style="width: 150px;" alt="undef" >
+                </div>
+                <h3 class="my-3" value="ime">{{n.naziv}}</h3>
+                <p class="text-muted mb-1">{{n.autor}}</p>
+                <p class="text-muted mb-4">{{n.godina}}</p>
+                <div class="d-flex justify-content-center mb-2">
+                </div>
+              </div>
+            </div>
+            <div class="card mb-4 mb-lg-0">
+              <div class="card-body p-0">
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Naziv:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{n.naziv}}</p>
+                   
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Autor:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{n.autor}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Jezik:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{n.jezik}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Godina:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{n.godina}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Izdavac:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew" > {{n.izdavac}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Zanr:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew"  > {{n.zanr}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Poruke:</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p id="nazivNew" [class.crvena]="n.istekorok" > {{n.message}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <button class="btn btn-info text-white" (click)="detalji(n.id)">Detalji</button>
+              </div>
+                <div class="col-sm-3">   
+                <button class="btn btn-info text-white" (click)="razduzi(n.id)" >Razduzivanje</button>
+              </div>
+                <div class="col-sm-3">
+                <button class="btn btn-info text-white" *ngIf="n.produzio==true" disabled>Produzi</button>
+                <button class="btn btn-info text-white" *ngIf="n.produzio==false && status!='blokiran'" (click)="produzi(n.id,n.username,n.datumDo)" >Produzi</button>
+              </div>
+              </div>  
+          </div>
+                    
+        </div>
+      </div>
+      
+    </section>
+    </div>
+  </div>
+
+
+
+
+
+
+    <div class="mt-5 p-4 bg-dark text-white text-center" [class.footerabs]="allBooks.length==0" *ngIf="allBooks.length==0">
+      <p>Footer</p>
+    </div>
+
+
+
+    <div class="mt-5 p-4 bg-dark text-white text-center" [class.footer]="allBooks.length>0" *ngIf="allBooks.length>0">
+        <p>Footer</p>
+      </div>

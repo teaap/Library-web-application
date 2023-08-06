@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "632ad407bc30c6d1e042ed60"
+  },
+  "id": 3,
+  "username": "pera",
+  "tekst": "Odlicna knjiga!",
+  "ocena": 8,
+  "datum": {
+    "$date": {
+      "$numberLong": "1663751175095"
+    }
+  },
+  "izmenjen": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad6a79c5bba528018fe61"
+  },
+  "id": 3,
+  "username": "joka",
+  "tekst": "Sve preporuke..",
+  "ocena": 9,
+  "datum": {
+    "$date": {
+      "$numberLong": "1663752220727"
+    }
+  },
+  "izmenjen": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad8899c5bba528018fec8"
+  },
+  "id": 2,
+  "username": "pera",
+  "tekst": "Knjiga je dobra",
+  "ocena": 7,
+  "datum": {
+    "$date": {
+      "$numberLong": "1663752329274"
+    }
+  },
+  "izmenjen": false,
+  "__v": 0
+}]
